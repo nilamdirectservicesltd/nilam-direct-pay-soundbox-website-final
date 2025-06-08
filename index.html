@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Nilam Direct Pay Soundbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #FFD586;
+      --secondary: #FFE99A;
+      --accent1: #FFAAAA;
+      --accent2: #FF9898;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      animation: gradientShift 15s ease infinite;
+      background-size: 200% 200%;
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: rgba(255, 255, 255, 0.95);
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      animation: float 6s ease-in-out infinite, fadeInUp 1s ease forwards 0.3s;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translate(-50%, -45%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(-50%, -52%); }
+      50% { transform: translate(-50%, -48%); }
+    }
+
+    .quote {
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #555;
+      animation: colorChange 10s infinite alternate;
+    }
+
+    @keyframes colorChange {
+      0% { color: #555; }
+      25% { color: #FF6B6B; }
+      50% { color: #6B6BFF; }
+      75% { color: #6BFF6B; }
+      100% { color: #FF6BFF; }
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 15px;
+      font-size: 16px;
+      margin-top: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+
+    input[type="text"]:focus {
+      border-color: var(--accent1);
+      box-shadow: 0 0 0 3px rgba(255, 170, 170, 0.2);
+      outline: none;
+      transform: scale(1.02);
+    }
+
+    .error {
+      color: #e74c3c;
+      margin-top: 10px;
+      font-size: 14px;
+      display: none;
+    }
+
+    .shake {
+      animation: shake 0.5s;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-5px); }
+      40%, 80% { transform: translateX(5px); }
+    }
+
+    .btn {
+      margin: 10px 5px 0;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 8px;
+      border: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    .btn-listen { 
+      background-color: var(--primary); 
+      color: #333; 
+    }
+    
+    .btn-listen:active {
+      animation: squeeze 0.4s;
+    }
+
+    @keyframes squeeze {
+      50% { transform: scale(0.9) translateY(-3px); }
+    }
+
+    .btn-fail { 
+      background-color: var(--accent2); 
+      color: #fff; 
+    }
+    
+    .btn-fail:active {
+      animation: vibrate 0.3s linear;
+    }
+
+    @keyframes vibrate {
+      0% { transform: translate(0); }
+      20% { transform: translate(-2px, 2px); }
+      40% { transform: translate(-2px, -2px); }
+      60% { transform: translate(2px, 2px); }
+      80% { transform: translate(2px, -2px); }
+      100% { transform: translate(0); }
+    }
+
+    .btn-pay { 
+      background: linear-gradient(135deg, var(--accent1), var(--accent2)); 
+      color: #fff;
+      animation: pulse 2s infinite;
+    }
+    
+    .btn-pay:hover {
+      background: linear-gradient(135deg, #FF9898, #FF6B6B);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 170, 170, 0.7); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 170, 170, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 170, 170, 0); }
+    }
+
+    .btn-nds-library { 
+      background: linear-gradient(135deg, #FFAAAA, #FF6B6B); 
+      color: #fff; 
+    }
+    
+    .btn-nds-library:hover {
+      background: linear-gradient(135deg, #FF6B6B, #FF0000);
+    }
+
+    .btn-refresh { 
+      background-color: #444; 
+      color: #fff; 
+    }
+
+    .clock {
+      font-size: 24px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 15px;
+      border-radius: 8px;
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+      to { box-shadow: 0 0 15px rgba(255, 255, 255, 0.8); }
+    }
+
+    @media (max-width: 768px) {
+      .container { width: 90%; padding: 20px; }
+      .quote { font-size: 20px; }
+      .btn { padding: 10px 15px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="clock" id="clock"></div>
+  <div class="container">
+    <div class="quote" id="motivation"></div>
+
+    <label for="amount">Enter amount in INR or points:</label>
+    <input type="text" id="amount" placeholder="e.g. 500 or 100.50">
+    <div id="error-container" class="error"></div>
+
+    <button class="btn btn-listen">Listen</button>
+    <button class="btn btn-fail">Fail</button>
+    <a href="https://bit.ly/ndslibrary" target="_blank" class="btn btn-nds-library">Go to NDS Library</a>
+    <a href="https://nilamdirectservicesltd.github.io/nds-pay-to-all-person-main-website/" target="_blank" class="btn btn-pay">Pay</a>
+    <button class="btn btn-refresh" onclick="location.reload()">Refresh</button>
+  </div>
+
+  <script>
+    const quotes = [
+      "It's a great day to start your work!",
+      "Believe in yourself. You are capable of amazing things.",
+      "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+      "The only way to do great work is to love what you do.",
+      "Don't watch the clock; do what it does. Keep going.",
+      "You are never too old to set another goal or to dream a new dream."
+    ];
+
+    document.getElementById('motivation').textContent = quotes[Math.floor(Math.random() * quotes.length)];
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').textContent =
+        now.toLocaleTimeString('en-IN', { hour12: false });
+    }
+    setInterval(updateClock, 1000); updateClock();
+
+    const amountInput = document.getElementById('amount');
+    const errorContainer = document.getElementById('error-container');
+
+    function validateAmount() {
+      const val = amountInput.value.trim();
+      const isValid = /^(\d+(\.\d{1,2})?)$/.test(val);
+      
+      if (!isValid) {
+        amountInput.classList.add('shake');
+        setTimeout(() => amountInput.classList.remove('shake'), 500);
+      }
+      
+      errorContainer.style.display = isValid ? 'none' : 'block';
+      errorContainer.textContent = isValid ? '' : 'Please enter a valid amount (e.g., 100 or 100.50).';
+      return isValid;
+    }
+
+    function speak(text) {
+      const synth = window.speechSynthesis;
+      if (!synth) return;
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'hi-IN';
+      synth.cancel();
+      synth.speak(utter);
+    }
+
+    document.querySelector('.btn-listen').onclick = () => {
+      if (!validateAmount()) return;
+      const amount = amountInput.value.trim();
+      const audio = new Audio('paymentdone.mp3');
+      audio.onerror = () => speak(`रुपये ${amount} नीलम डायरेक्ट पे फॉर बिज़नेस में क्रेडिट किया गया है।`);
+      audio.onended = () => speak(`रुपये ${amount} नीलम डायरेक्ट पे फॉर बिज़नेस में क्रेडिट किया गया है।`);
+      audio.play();
+    };
+
+    document.querySelector('.btn-fail').onclick = () => {
+      const amount = amountInput.value.trim();
+      const failAudio = new Audio('paymentfailsound.mp3');
+      failAudio.onerror = () => {
+        speak(/^\d+/.test(amount)
+          ? `क्षमा करें, लेकिन हमें ${amount} का भुगतान प्राप्त नहीं हुआ है। कृपया इंटरनेट की जाँच करें और पुन: प्रयास करें।`
+          : "क्षमा करें, हमें भुगतान नहीं मिला है। कृपया पुन: प्रयास करें और इंटरनेट चालू करें।");
+      };
+      failAudio.onended = failAudio.onerror;
+      failAudio.play();
+    };
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
